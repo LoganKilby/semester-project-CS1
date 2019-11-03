@@ -30,7 +30,7 @@ int main()
 		case 1: break;
 		case 2: break;
 		case 3: 
-			outputFile.open("E:\\Repos\\ConsoleApplication1\\ConsoleApplication1\\player-data.txt", fstream::app); //How can I change this to work after project submission?			
+			outputFile.open("E:\\Repos\\semester-project-CS1\\ConsoleApplication1\\ConsoleApplication1\\player-data.txt", fstream::app); //How can I change this to work after project submission?			
 
 			if (outputFile) {
 				do {
