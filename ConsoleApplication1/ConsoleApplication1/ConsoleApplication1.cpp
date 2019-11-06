@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <ios>
+#include <limits>
 using namespace std;
 
 
@@ -13,6 +15,7 @@ int DisplayMenu() {
 	cout << "1 ... Initialize Application\n2 ... Load Data\n3 ... Enter New Player\n4 ... Display ALL Players\n5 ... Display ONE Player\n6 ... Sort Players by Last Name\n9 ... Exit Application" << endl;
 	cout << "\nChoose: ";
 	cin >> num;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n'); //this is the only fix I could find to clear the entire input buffer and not have issues. I'm sure there's a simpler solution. -Logan
 	return num;
 }
 
@@ -30,27 +33,25 @@ int main()
 		case 1: break;
 		case 2: break;
 		case 3: 
-			outputFile.open("E:\\Repos\\semester-project-CS1\\ConsoleApplication1\\ConsoleApplication1\\player-data.txt", fstream::app); //How can I change this to work after project submission?			
+			outputFile.open("E:\\Repos\\semester-project-CS1\\ConsoleApplication1\\ConsoleApplication1\\player-data.txt", fstream::app); //pathing will likely not exist on E:\\ after submission... 			
 
-			if (outputFile) {
+			if (outputFile.is_open()) {
 				do {
-					cout << "Please enter the player's first and last name followed by their jersey number.\nTo return to the menu, enter 'Exit': ";
-					cin.ignore(); //flushing \n character from input buffer
+					cout << "Please enter the player's first and last name followed by their jersey number.\nTo return to the menu, enter ^: ";
 					getline(cin, player_name);
-					if (player_name == "Exit") {
+					if (player_name == "^") {
 						outputFile.close();
-					}
-					else {
+					} else {
 						outputFile << player_name << endl;
 						cout << "Player file updated.\n\n";
 					}
 
-				} while (player_name != "Exit");
+				} while (player_name != "^");
 
 			} else {
-				cout << "Error: Output file 'player-data.txt' could not be found";
+				cout << "Error: Output file 'player-data.txt' could not be opened";
 			}
-			
+
 			break;
 
 		case 4: break;
