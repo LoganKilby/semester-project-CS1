@@ -1,0 +1,6 @@
+logan k2
+logan l1
+logan m3
+file overwriting3
+map test1
+map working2
