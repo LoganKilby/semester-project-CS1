@@ -1,12 +1,18 @@
 #pragma once
 
-#include <iostream>
-#include <fstream> //i/o file
 #include <string>
-#include <ios>
-#include <limits> //input buffer issue
-#include <map> //map
-#include <typeinfo> //checking types (solving "^" issue)
+#include "GlobalConstants.h"
 using namespace std;
 
-int DisplayMenu();
+int displayMenu();
+void enterPlayers(string array[ROWS][COLS]);
+void initArray(string array[ROWS][COLS]);
+int firstAvailableRow(const string array[ROWS][COLS]);
+void saveData(const string array[ROWS][COLS]);
+void loadData(string array[ROWS][COLS]);
+void displayAll(const string array[ROWS][COLS]);
+void displayAppStatus(const string array[ROWS][COLS]);
+void displaySelected(const string array[ROWS][COLS]);
+void sortArray(string array[ROWS][COLS]);
+void swapRecords(string array[ROWS][COLS], int index);
+void Banner(string message);
